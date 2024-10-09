@@ -11,7 +11,8 @@ app.use(cors());
 app.use('/', publicRoutes);
 app.use('/',authMiddleware, privateRoutes);
 
-app.listen(3000,() =>{
-  console.log('Server is running on port 3000');
-})
+app.listen(process.env.PORT ? Number(process.env.PORT) : 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
+});
+
 

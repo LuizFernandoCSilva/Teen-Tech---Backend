@@ -13,6 +13,11 @@ router.post('/register', async (req, res) => {
   try {
     const { name, email, password, role, registrationNumber } = req.body;
 
+    const numberMatriculation = ['2022010384','2022003933','2022002551','2022013072','2022003915','2022002186','2022003307','2022003334']
+    if (role === 'teacher' && !numberMatriculation.includes(registrationNumber)) {
+      return res.status(400).json({ error: 'Invalid registration number' });
+    }
+    
     if (!['student', 'teacher'].includes(role)) {
       return res.status(400).json({ error: 'Invalid role' });
     }
