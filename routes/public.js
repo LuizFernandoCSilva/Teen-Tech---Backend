@@ -18,7 +18,6 @@ router.post("/register", async (req, res, next) => {
   try {
     const { name, email, password, role, registrationNumber } = req.body;
 
-<<<<<<< HEAD
     // Validação do número de matrícula para professores
     const numberMatriculation = [
       "2022010384",
@@ -36,15 +35,6 @@ router.post("/register", async (req, res, next) => {
       !numberMatriculation.includes(registrationNumber)
     ) {
       return res.status(400).json({ error: "Invalid registration number" });
-=======
-    const numberMatriculation = ['2022010384','2022003933','2022002551','2022013072','2022003915','2022002186','2022003307','2022003334']
-    if (role === 'teacher' && !numberMatriculation.includes(registrationNumber)) {
-      return res.status(400).json({ error: 'Invalid registration number' });
-    }
-    
-    if (!['student', 'teacher'].includes(role)) {
-      return res.status(400).json({ error: 'Invalid role' });
->>>>>>> 6cfc49e27ac747482296a03866c54a1cc9ed102d
     }
 
     if (!["student", "teacher"].includes(role)) {
